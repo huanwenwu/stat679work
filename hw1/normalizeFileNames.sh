@@ -1,8 +1,9 @@
-for var in `ls out/timetest?_*.out`;
-do mv "$var" out/`echo "$var" |awk -F 'st' '{print "timetest0" $2}'`;
-done;
-for var in `ls log/timetest?_*.log`;
-do mv "$var" log/`echo "$var" |awk -F 'st' '{print "timetest0" $2}'`;
+# change all file names timetesty_snaq.log to timetest0y_snaq.log
+for filename in `ls log/timetest?_*.log`;   # ls "log" director first     
+do mv "$filename" ${filename:0:12}0${filename:12}; #insert a "0" between the 12th and 13th characters of filename
 done;
 
-
+# change all file names timetesty_snaq.out to timetest0y_snaq.out
+for filename in `ls out/timetest?_*.out`;
+do mv "$filename" ${filename:0:12}0${filename:12};
+done;
